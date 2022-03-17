@@ -9,17 +9,18 @@ import About from './About'
 import Settings from './Settings'
 import Container from '@mui/material/Container';
 import Box from '@mui/material/Box'
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import {
   BrowserRouter as Router,
   Routes,
   Route,
-  Link
+  Link,
 } from "react-router-dom";
 
 
 function App() {
   const [userTheme, setUserTheme] = useState('dark')
+  const [loc, setLoc] = useState('English Game')
 
   const listPages = [
     {path: '/about', title: 'About', element: <About />}, 
@@ -29,24 +30,29 @@ function App() {
   ]
 
   const pages = (theme) => {
-    let list = listPages.map((p, i) => <Route key={i} path={p.path} title={p.title} element={p.element}/>)
+    let list = listPages.map((p, i) => <Route key={i} path={p.path} title={p.title} setTitle={setLoc} element={p.element}/>)
     return list
   }
 
+  useEffect(() => {
+    const page = listPages.find((page) => page.path === loc)
+    document.title = (page ? page.title : 'Page') + ' / Fobrales'
+  });
+
   return (
-    <ThemeProvider theme={theme(userTheme)}>
       <Router>
-      <Box sx={{ bgcolor: 'background.default', color: 'text.background', height: '100vh'}}>
-      <Header pages={listPages.slice(0, -1)} />
-      <Container maxWidth='xl' sx={{ py: 2, px: 1, bgcolor: 'background.paper', color: 'text.background' }}>
-      <Routes>
-        {pages()}
-      </Routes>
-      <Footer />
-      </Container>
-      </Box>
+        <ThemeProvider theme={theme(userTheme)}>
+          <Box sx={{ bgcolor: 'background.default', color: 'text.background', height: '100vh'}}>
+            <Header pages={listPages.slice(0, -1)} setTitle={setLoc} />
+            <Container maxWidth='xl' sx={{ py: 2, px: 1, bgcolor: 'background.paper', color: 'text.background' }}>
+            <Routes>
+              {pages()}
+            </Routes>
+            <Footer />
+            </Container>
+          </Box>
+        </ThemeProvider>
       </Router>
-    </ThemeProvider>
   );
 }
 

@@ -38,7 +38,6 @@ const Header = (props) => {
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
-    console.log(newValue, location.pathname)
   };
 
   const clickMenu = (e) => {
@@ -46,6 +45,10 @@ const Header = (props) => {
     setMenu(e.currentTarget)
     setOpened(!opened)
   }
+
+  React.useEffect(() => {
+    props.setTitle(location.pathname)
+  });
 
   return (
     <AppBar position="sticky" sx={{bgcolor: 'background.default'}}>
@@ -80,7 +83,7 @@ const Header = (props) => {
                 display: { xs: 'block', md: 'none' },
               }}
             >
-              {props.pages.map((p) => <MenuItem label={p.title} component={Link} to={p.path} onClick={clickMenu}>
+              {props.pages.map((p) => <MenuItem key={p.path} label={p.title} component={Link} to={p.path} onClick={clickMenu}>
                   {p.title}
                 </MenuItem>)}
           </Menu>

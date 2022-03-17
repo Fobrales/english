@@ -13,7 +13,7 @@ const Footer = () => {
     <Box>
       <Divider light sx={{mt: 2}} />
       <Box sx={{mt: 2, display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
-        &copy; Mokhnatova Anna | 2022
+      2022 &copy; Fobrales (Mokhnatova A.)
       </Box>
     </Box>
   );
