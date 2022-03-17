@@ -1,4 +1,5 @@
 import './App.css';
+import HeadImage from './layout/HeadImage'
 import Header from './layout/Header'
 import Footer from './layout/Footer'
 import { ThemeProvider } from '@mui/material/styles';
@@ -7,6 +8,7 @@ import { theme } from './layout/palette'
 import Game from './Game'
 import About from './About'
 import Settings from './Settings'
+import NotFound from './NotFound'
 import Container from '@mui/material/Container';
 import Box from '@mui/material/Box'
 import { useState, useEffect } from 'react';
@@ -27,6 +29,7 @@ function App() {
     {path: '/game', title: 'Game', element: <Game />}, 
     {path: '/settings', title: 'Settings', element: <Settings />},
     {path: '/', title: 'About', element: <About />},
+    {path: '*', title: 'Page not found', element: <NotFound />}
   ]
 
   const pages = (theme) => {
@@ -36,20 +39,21 @@ function App() {
 
   useEffect(() => {
     const page = listPages.find((page) => page.path === loc)
-    document.title = (page ? page.title : 'Page') + ' / Fobrales'
+    document.title = (page ? page.title : 'Loading...') + ' / Fobrales'
   });
 
   return (
       <Router>
         <ThemeProvider theme={theme(userTheme)}>
           <Box sx={{ bgcolor: 'background.default', color: 'text.background', height: '100vh'}}>
-            <Header pages={listPages.slice(0, -1)} setTitle={setLoc} />
-            <Container maxWidth='xl' sx={{ py: 2, px: 1, bgcolor: 'background.paper', color: 'text.background' }}>
+            <Header pages={listPages.slice(0, -2)} setTitle={setLoc} />
+            <HeadImage/>
+            <Container maxWidth='xl' sx={{ py: 2, px: 1, mt: 1, bgcolor: 'background.paper', color: 'text.background', borderRadius: 2 }}>
             <Routes>
               {pages()}
             </Routes>
-            <Footer />
             </Container>
+            <Footer />
           </Box>
         </ThemeProvider>
       </Router>

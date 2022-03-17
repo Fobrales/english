@@ -51,7 +51,7 @@ const Header = (props) => {
   });
 
   return (
-    <AppBar position="sticky" sx={{bgcolor: 'background.default'}}>
+    <AppBar position="sticky" sx={{mt: -1, bgcolor: 'background.default'}}>
       <Container maxWidth="xl" sx={{flexDirection: 'row', justifyContent: {xs: 'space-between', sm: 'flex-start'}, flexWrap: 'wrap',  display: 'flex'}}>
         <Box sx={{mx: 2, display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
             <Logo />
