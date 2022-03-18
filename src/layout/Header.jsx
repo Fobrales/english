@@ -75,7 +75,7 @@ const Header = (props) => {
                 display: { xs: 'block', md: 'none' },
               }}
             >
-              {props.pages.map((p) => <MenuItem key={p.path} label={p.title} component={Link} to={p.path} onClick={clickMenu}>
+              {props.pages.map((p) => <MenuItem sx={{color: 'text.background' }} key={p.path} label={p.title} component={Link} to={p.path} onClick={clickMenu}>
                   {p.title}
                 </MenuItem>)}
           </Menu>
