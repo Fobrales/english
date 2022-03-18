@@ -15,7 +15,6 @@ export default function About() {
       <Box>
           <p>This project make for demonstration my skills. It's game for english vocabulary training. Your goal is print english words so fast as possible and get points.</p>
           <p>So, if you would like learn more about code, I repeat readme info bottom:</p>
-          <Divider light sx={{my: 1}} />
           <Box
           sx={{
             display: 'flex',
@@ -23,8 +22,6 @@ export default function About() {
             alignItems: 'stretch',
             justifyContent: 'center',
             flexWrap: 'wrap',
-            p: 1,
-            m: 1,
           }}
         >
           {info.map((info, n) => <Box key={n + info.split(' ')[0]} sx={{

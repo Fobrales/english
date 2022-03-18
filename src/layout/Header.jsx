@@ -10,9 +10,6 @@ import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 
 import {
-  BrowserRouter as Router,
-  Routes,
-  Route,
   Link,
   useLocation
 } from "react-router-dom";
@@ -31,34 +28,29 @@ const Logo = () => {
 }
 
 const Header = (props) => {
-  const [value, setValue] = React.useState(0);
+  const location = useLocation();
+  const [value, setValue] = React.useState(props.pages.findIndex(p => p.path === location.pathname) || 0);
   const [opened, setOpened] = React.useState(false);
   const [menu, setMenu] = React.useState(false);
-  const location = useLocation();
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
 
   const clickMenu = (e) => {
-    console.log(e.currentTarget)
     setMenu(e.currentTarget)
     setOpened(!opened)
   }
 
-  React.useEffect(() => {
-    props.setTitle(location.pathname)
-  });
-
   return (
-    <AppBar position="sticky" sx={{mt: -1, bgcolor: 'background.default'}}>
+    <AppBar position="sticky" sx={{mt: -1, color: 'text.background', bgcolor: 'background.light'}}>
       <Container maxWidth="xl" sx={{flexDirection: 'row', justifyContent: {xs: 'space-between', sm: 'flex-start'}, flexWrap: 'wrap',  display: 'flex'}}>
         <Box sx={{mx: 2, display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
             <Logo />
         </Box>
         <Box sx={{display: {xs: 'none', sm: 'block'} }}>
           <Tabs textColor="primary" indicatorColor="primary" value={value} onChange={handleChange}>
-            {props.pages.map((p) => <Tab key={p.path} label={p.title} component={Link} to={p.path}/>)}
+            {props.pages.map((p) => <Tab sx={{color: 'text.background'}} key={p.path} label={p.title} component={Link} to={p.path}/>)}
           </Tabs>
         </Box>
         <Box sx={{display: { xs: 'flex', sm: 'none' }, justifyContent: 'center', alignItems: 'center'}}>
