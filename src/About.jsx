@@ -9,7 +9,8 @@ export default function About() {
       `Design and style developed with MUI, React UI library based on material design principles.`,
       `I use React hooks and class components together in the app to demonstrate equal work skill's level with both.`,
       `App is adaptive and useable for mobile and laptop. Menu hide on 600px screen width, then menu icon with drop list appear. Web page layout developed with using flexbox and grid.`,
-      `For translation words I use API of service Yandex.Dictionary. HTTP-request to JSON interface of service executed using axios library.`
+      `For translation words I use API of service Yandex.Dictionary. HTTP-request to JSON interface of service executed using axios library.`,
+      `Words in game generate using library randomwords`
     ]
 
     return (
@@ -36,7 +37,7 @@ export default function About() {
             borderRadius: 2,
             lineHeight: 2,
              }}>
-               <BoltIcon sx={{verticalAlign: 'middle'}}/> {info}
+               <BoltIcon sx={{verticalAlign: 'middle'}}/><span>{info}</span>
             </Box>)}
       </Box>
     </Box>
