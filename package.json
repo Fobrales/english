@@ -2,7 +2,7 @@
   "name": "english",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://fobrales.github.io",
+  "homepage": "https://fobrales.github.io/english",
   "dependencies": {
     "@emotion/react": "^11.8.2",
     "@emotion/styled": "^11.8.1",
