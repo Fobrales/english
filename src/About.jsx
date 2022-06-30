@@ -9,8 +9,9 @@ export default function About() {
       `Design and style developed with MUI, React UI library based on material design principles.`,
       `I use React hooks and class components together in the app to demonstrate equal work skill's level with both.`,
       `App is adaptive and useable for mobile and laptop. Menu hide on 600px screen width, then menu icon with drop list appear. Web page layout developed with using flexbox and grid.`,
-      `For translation words I use API of service Yandex.Dictionary. HTTP-request to JSON interface of service executed using axios library.`,
-      `Words in game generate using library randomwords`
+      `For translation words I use API of service Yandex.Dictionary. HTTP-request to JSON interface of service executed using axios library. Words in game generate using library randomwords.`,
+      `App has two themes saving in localStorage for browser remember your choice between session. Using React Context API for theme store.`,
+      `For store other settings I use react-redux.`
     ]
 
     return (

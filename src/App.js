@@ -1,18 +1,25 @@
 import './App.css';
-import HeadImage from './layout/HeadImage'
+
+// components
 import Header from './layout/Header'
 import Footer from './layout/Footer'
-import { ThemeProvider } from '@mui/material/styles';
-import { theme } from './layout/palette'
-import User from './scripts/User'
-
 import Game from './Game'
 import About from './About'
 import Settings from './Settings'
 import NotFound from './NotFound'
+
+// design
+import { ThemeProvider } from '@mui/material/styles';
+import { theme } from './layout/palette'
 import Container from '@mui/material/Container';
 import Box from '@mui/material/Box'
-import { useState, useEffect, useMemo } from 'react';
+
+//context API store
+import User from './scripts/User'
+
+import { useState, useEffect, useMemo } from 'react'
+
+// router
 import {
   BrowserRouter as Router,
   Routes,
@@ -20,6 +27,10 @@ import {
   Link,
   useLocation
 } from "react-router-dom";
+
+//redux API store
+import { Provider } from 'react-redux'
+import store from './scripts/SettingsStore'
 
 
 function App() {
@@ -53,9 +64,11 @@ function App() {
           <Box sx={{ bgcolor: 'background.default', color: 'text.background', height: '100vh'}}>
             <Header pages={listPages.slice(0, -2)} />
             <Container maxWidth='xl' sx={{ mt: -1, py: 2, px: 1, bgcolor: 'background.paper', color: 'text.background', borderRadius: 2 }}>
+            <Provider store={store}>
             <Routes>
               {pages()}
             </Routes>
+            </Provider>
             </Container>
             <Footer />
           </Box>
