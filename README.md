@@ -1,6 +1,6 @@
 ## `About`
 
-This project created for skill's demonstration. React-router-dom, MUI React, axios library and Yandex.Dictionary API was used in developing.
+This project created for skill's demonstration. React-router-dom, react-redux, MUI React, axios library and Yandex.Dictionary API was used in developing.
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app). For start it in develop mode run npmstart, else for create build run npm run build and then start server in build directory (cd build && serve -s build).
 
